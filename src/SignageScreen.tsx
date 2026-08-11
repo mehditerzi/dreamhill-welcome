@@ -44,7 +44,6 @@ export function SignageScreen({ provider = defaultProvider }: { provider?: Excha
           rooms={signageConfig.rooms}
           rate={rate}
           focus={presentation.focus}
-          onFocus={presentation.focusManually}
           animationMs={signageConfig.presentation.numberAnimationMs}
         />
       </section>

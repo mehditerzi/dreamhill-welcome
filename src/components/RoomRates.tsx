@@ -1,4 +1,4 @@
-import type { RoomId, RoomRate } from '../config/signage'
+import type { RoomRate } from '../config/signage'
 import type { PresentationFocus } from '../presentation/sequence'
 import { convertEurToTry, formatEuro, formatTry } from '../exchange/currency'
 import { AnimatedNumber } from './AnimatedNumber'
@@ -7,7 +7,6 @@ type RoomRatesProps = {
   rooms: readonly RoomRate[]
   rate: number | null
   focus: PresentationFocus
-  onFocus: (room: RoomId) => void
   animationMs: number
 }
 
@@ -22,19 +21,14 @@ function PriceColumn({ label, euro, rate, animationMs }: { label: string; euro: 
   </div>
 }
 
-export function RoomRates({ rooms, rate, focus, onFocus, animationMs }: RoomRatesProps) {
+export function RoomRates({ rooms, rate, focus, animationMs }: RoomRatesProps) {
   return <div className="room-rates">
     {rooms.map((room) => {
       const active = focus === room.id
-      return <button
+      return <article
         key={room.id}
-        type="button"
         className={`room-rate ${active ? 'is-active' : ''}`}
-        aria-label={`${room.name}, Single ${formatEuro(room.single)}, Double ${formatEuro(room.double)}`}
-        aria-pressed={active}
-        onClick={() => onFocus(room.id)}
-        onPointerEnter={(event) => { if (event.pointerType !== 'touch') onFocus(room.id) }}
-        onFocus={() => onFocus(room.id)}
+        aria-current={active ? 'true' : undefined}
       >
         <span className="room-rate__rail" aria-hidden="true" />
         <span className="room-rate__heading">
@@ -45,7 +39,7 @@ export function RoomRates({ rooms, rate, focus, onFocus, animationMs }: RoomRate
           <PriceColumn label="Single" euro={room.single} rate={rate} animationMs={animationMs} />
           <PriceColumn label="Double" euro={room.double} rate={rate} animationMs={animationMs} />
         </span>
-      </button>
+      </article>
     })}
   </div>
 }

@@ -31,7 +31,6 @@ export type SignageConfig = {
   presentation: {
     overviewDurationMs: number
     focusDurationMs: number
-    manualFocusDurationMs: number
     numberAnimationMs: number
   }
   rooms: readonly RoomRate[]
@@ -57,7 +56,7 @@ export const signageConfig: SignageConfig = {
   currency: {
     base: 'EUR',
     quote: 'TRY',
-    endpoint: 'https://api.frankfurter.app/latest?from=EUR&to=TRY',
+    endpoint: 'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=TRY',
     cacheKey: 'dream-hill:eur-try-rate:v1',
     refreshIntervalMs: 1_800_000,
     fetchTimeoutMs: 8_000,
@@ -66,7 +65,6 @@ export const signageConfig: SignageConfig = {
   presentation: {
     overviewDurationMs: 12_000,
     focusDurationMs: 8_000,
-    manualFocusDurationMs: 18_000,
     numberAnimationMs: 1_200,
   },
   rooms: [

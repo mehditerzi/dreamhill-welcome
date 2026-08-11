@@ -32,7 +32,7 @@
 - `src/exchange/currency.ts`: conversion and locale formatting helpers.
 - `src/exchange/useExchangeRate.ts`: polling, status, lifecycle, cache, and network orchestration.
 - `src/presentation/sequence.ts`: pure focus-sequence transition helpers.
-- `src/presentation/usePresentationCycle.ts`: unattended timer and temporary manual override.
+- `src/presentation/usePresentationCycle.ts`: unattended automatic focus timer.
 - `src/components/*`: bounded visual units and error fallback.
 - `src/styles.css`: tokenized portrait composition, interaction, motion, and ratio adaptations.
 - `src/**/*.test.ts(x)`: behavior tests colocated with modules/components.
@@ -227,9 +227,9 @@ Export the literal focus type, ordered sequence, and deterministic `nextFocus` f
 Run: `npm test -- src/presentation/sequence.test.ts`
 Expected: all sequence tests pass.
 
-- [ ] **Step 5: Write failing hook tests for automatic and manual focus**
+- [ ] **Step 5: Write failing hook tests for automatic focus**
 
-With fake timers, assert focus advances after the configured overview/focus duration, `focusManually('french')` overrides immediately, repeated interaction extends the override, and the automatic sequence restarts at overview after the manual timeout.
+With fake timers, assert focus advances after the configured overview/focus durations through every room and returns to overview.
 
 - [ ] **Step 6: Run the hook test and verify RED**
 
@@ -238,7 +238,7 @@ Expected: FAIL because the hook is missing.
 
 - [ ] **Step 7: Implement the presentation hook**
 
-Use one automatic timer and one manual-reset timer, expose `{ focus, focusManually, clearManualFocus }`, and clean up on unmount.
+Use one automatic timer, expose `{ focus }`, and clean up on unmount.
 
 - [ ] **Step 8: Run presentation tests and verify GREEN**
 
@@ -247,11 +247,11 @@ Expected: all presentation tests pass.
 
 - [ ] **Step 9: Implement the bounded visual components**
 
-`AnimatedNumber` interpolates from its last displayed value with `requestAnimationFrame`; `ResilientImage` attempts remote, then local, then invokes a CSS-placeholder state; hero layers use `aria-hidden` for inactive images; room rows are buttons with explicit Single/Double columns and secondary TRY lines; status copy distinguishes Live, Cached, Offline, and Connecting.
+`AnimatedNumber` interpolates from its last displayed value with `requestAnimationFrame`; `ResilientImage` attempts remote, then local, then invokes a CSS-placeholder state; hero layers use `aria-hidden` for inactive images; passive room rows use explicit Single/Double columns and secondary TRY lines; status copy distinguishes Live, Cached, Offline, and Connecting.
 
 - [ ] **Step 10: Add focused component tests**
 
-Test remote-to-local image fallback and final placeholder, exact visible EUR copy in room rows/extras, focus callback on click, and cached/live status labels. Run once before component implementation completion to observe missing-behavior failures, then run again after implementation.
+Test remote-to-local image fallback and final placeholder, exact visible EUR copy in room rows/extras, absence of interactive controls, and cached/live status labels. Run once before component implementation completion to observe missing-behavior failures, then run again after implementation.
 
 - [ ] **Step 11: Run all component and presentation tests**
 
@@ -295,7 +295,7 @@ Connect one exchange hook and one presentation hook at screen level; feed the sa
 
 - [ ] **Step 4: Implement the tokenized portrait CSS**
 
-Define the approved six-color palette, type stacks, safe portrait padding, masthead/hero/ledger/footer grid, precise 1080×1920 `clamp()` sizing, focus rail, soft glass surfaces, photograph veil, crossfade/Ken Burns, slow ambient pseudo-elements, light sweep, focus/hover states, nearby portrait breakpoints, landscape containment, and complete reduced-motion overrides.
+Define the approved six-color palette, type stacks, safe portrait padding, masthead/hero/ledger/footer grid, precise 1080×1920 `clamp()` sizing, focus rail, soft glass surfaces, photograph veil, crossfade/Ken Burns, slow ambient pseudo-elements, glossy gold light sweep, automatic focus states, nearby portrait breakpoints, landscape containment, and complete reduced-motion overrides.
 
 - [ ] **Step 5: Run the integration test and verify GREEN**
 
@@ -339,7 +339,7 @@ Open the local app in the in-app browser, set the viewport to 1080×1920, wait f
 
 - [ ] **Step 4: Verify interaction and timing**
 
-Click each room row and confirm matching hero/focus state without URL change; use shortened timing in browser state or controlled timers to confirm the complete unattended sequence returns to overview; verify focus returns after manual inactivity.
+Confirm there are no buttons, links, tabbable elements, or pointer/keyboard affordances; use controlled timing to confirm the complete unattended sequence returns to overview and keeps the hero synchronized.
 
 - [ ] **Step 5: Verify degraded operation**
 

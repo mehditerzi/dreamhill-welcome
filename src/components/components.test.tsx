@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { signageConfig } from '../config/signage'
 import { CurrencyStatus } from './CurrencyStatus'
 import { Extras } from './Extras'
@@ -17,10 +17,9 @@ describe('signage components', () => {
     expect(container.firstChild).toHaveClass('resilient-image--placeholder')
   })
 
-  it('shows exact room and extras prices and focuses a selected room', () => {
-    const onFocus = vi.fn()
+  it('shows exact room and extras prices without interactive controls', () => {
     render(<>
-      <RoomRates rooms={signageConfig.rooms} rate={52.63} focus="overview" onFocus={onFocus} animationMs={0} />
+      <RoomRates rooms={signageConfig.rooms} rate={52.63} focus="overview" animationMs={0} />
       <Extras items={signageConfig.extras} rate={52.63} animationMs={0} />
     </>)
     expect(screen.getAllByText('€300')).toHaveLength(2)
@@ -30,8 +29,7 @@ describe('signage components', () => {
     expect(screen.getByText('€170')).toBeInTheDocument()
     expect(screen.getByText('€25')).toBeInTheDocument()
     expect(screen.getByText('€18')).toBeInTheDocument()
-    fireEvent.click(screen.getByRole('button', { name: /Deluxe French Bed Room/i }))
-    expect(onFocus).toHaveBeenCalledWith('french')
+    expect(screen.queryAllByRole('button')).toHaveLength(0)
   })
 
   it('distinguishes live and cached exchange status', () => {

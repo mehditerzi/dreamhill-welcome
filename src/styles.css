@@ -28,14 +28,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-button { font: inherit; }
-
 .signage {
   position: relative;
   isolation: isolate;
   width: 100vw;
   height: 100dvh;
-  overflow: hidden;
+  overflow: clip;
   user-select: none;
   background:
     radial-gradient(130% 78% at 8% -5%, rgba(199, 154, 63, 0.22), transparent 51%),
@@ -284,7 +282,6 @@ button { font: inherit; }
   color: inherit;
   text-align: left;
   background: transparent;
-  cursor: pointer;
   overflow: hidden;
   transition: background 1.1s ease, box-shadow 1.1s ease, padding-left 1.1s ease;
 }
@@ -315,7 +312,6 @@ button { font: inherit; }
 .room-rate.is-active { padding-left: clamp(36px, 5.3vw, 58px); box-shadow: inset 0 0 54px rgba(210,165,77,.055); }
 .room-rate.is-active::before { opacity: 1; }
 .room-rate.is-active::after { opacity: 1; animation: card-gloss 7s ease-in-out infinite; }
-.room-rate:focus-visible { outline: 2px solid var(--champagne); outline-offset: -4px; }
 
 .room-rate__rail { position: absolute; z-index: 2; left: 0; top: 18%; bottom: 18%; width: 3px; background: var(--champagne); box-shadow: 0 0 20px rgba(213,182,111,.8); transform: scaleY(0); transition: transform 1s ease; }
 .room-rate.is-active .room-rate__rail { transform: scaleY(1); }

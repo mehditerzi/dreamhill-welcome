@@ -10,26 +10,11 @@ describe('usePresentationCycle', () => {
     const { result } = renderHook(() => usePresentationCycle({
       overviewDurationMs: 100,
       focusDurationMs: 80,
-      manualFocusDurationMs: 200,
     }))
     expect(result.current.focus).toBe('overview')
     act(() => vi.advanceTimersByTime(100))
     expect(result.current.focus).toBe('suite')
     act(() => vi.advanceTimersByTime(80))
     expect(result.current.focus).toBe('french')
-  })
-
-  it('temporarily holds manual focus before returning to overview', () => {
-    const { result } = renderHook(() => usePresentationCycle({
-      overviewDurationMs: 100,
-      focusDurationMs: 80,
-      manualFocusDurationMs: 200,
-    }))
-    act(() => result.current.focusManually('twin'))
-    expect(result.current.focus).toBe('twin')
-    act(() => vi.advanceTimersByTime(199))
-    expect(result.current.focus).toBe('twin')
-    act(() => vi.advanceTimersByTime(1))
-    expect(result.current.focus).toBe('overview')
   })
 })

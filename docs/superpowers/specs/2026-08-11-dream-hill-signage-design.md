@@ -54,7 +54,7 @@ All presentation data lives in one typed configuration module:
 - Official logo and official room-image URLs
 - Bundled fallback asset paths
 - Exchange refresh interval and stale threshold
-- Overview/focus timing and manual-focus timeout
+- Overview/focus timing
 - Tax/service note
 
 Components receive configuration data rather than embedding hotel content.
@@ -71,7 +71,7 @@ The unattended sequence is:
 
 Overview lasts slightly longer than focused states. A focused room gains modest height, stronger contrast, the champagne rail, and a restrained halo. Other rows remain fully readable. The hero crossfades to that room’s official photograph and performs a slow GPU-transformed Ken Burns drift.
 
-Pointer hover or tap temporarily overrides the sequence and focuses a room. Automatic presentation resumes after inactivity. Keyboard focus receives the same behavior for accessibility.
+The display is fully passive. It exposes no hover, pointer, touch, keyboard, click, or focus interactions; room focus is controlled only by the automatic presentation sequence.
 
 Motion respects `prefers-reduced-motion`: transitions become short fades, ambient movement stops, and the automatic content cycle continues without spatial animation.
 
@@ -109,11 +109,11 @@ The production project includes optimized local copies of those official files. 
 
 - `config`: typed hotel, rates, assets, and timing configuration
 - `exchange`: provider adapter, cache, polling service, and formatting helpers
-- `presentation`: automatic/manual focus state machine
+- `presentation`: automatic focus state machine
 - `AnimatedNumber`: reusable interpolated numeric display
 - `BrandHeader`: resilient official logo and hotel title
 - `HeroGallery`: crossfade stack, room captions, and image fallbacks
-- `RoomRates`: room ledger and interactive focus rows
+- `RoomRates`: passive room ledger with automatic focus styling
 - `Extras`: extra bed and breakfast prices
 - `CurrencyStatus`: live/cached/offline state and update time
 - `SignageScreen`: composes the portrait frame and owns cross-component focus state
@@ -131,7 +131,7 @@ Automated tests cover:
 - Exchange response normalization and validation
 - Cache read/write and malformed-cache recovery
 - EUR-to-TRY conversion and locale formatting
-- Presentation sequence and manual override timeout
+- Complete automatic presentation sequence
 - Failed exchange fetch retaining the last successful rate
 
 Production verification includes:
@@ -139,7 +139,7 @@ Production verification includes:
 - Type checking and optimized build
 - Browser test at exactly 1080×1920
 - Screenshot inspection for clipping, hierarchy, contrast, and balanced spacing
-- Interaction check for hover/tap focus and automatic resumption
+- Check that no input controls or interaction affordances are exposed
 - Offline check with cached rate and blocked remote images
 - Reduced-motion check
 - Nearby portrait viewport checks

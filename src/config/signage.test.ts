@@ -18,4 +18,12 @@ describe('signageConfig', () => {
     const urls = [signageConfig.brand.logo.remote, ...signageConfig.rooms.map((room) => room.image.remote)]
     expect(urls.every((url) => new URL(url).hostname === 'www.dreamhillhotel.com')).toBe(true)
   })
+
+  it('uses the current browser-compatible Frankfurter v1 endpoint', () => {
+    const endpoint = new URL(signageConfig.currency.endpoint)
+    expect(endpoint.hostname).toBe('api.frankfurter.dev')
+    expect(endpoint.pathname).toBe('/v1/latest')
+    expect(endpoint.searchParams.get('base')).toBe('EUR')
+    expect(endpoint.searchParams.get('symbols')).toBe('TRY')
+  })
 })
