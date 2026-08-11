@@ -49,7 +49,7 @@ export const signageConfig: SignageConfig = {
   brand: {
     logo: {
       remote: `${official}/logo-2x-1.png`,
-      fallback: '/assets/dream-hill/logo.png',
+      fallback: './assets/dream-hill/logo.png',
       alt: 'Dream Hill Business Deluxe Hotel',
     },
   },
@@ -76,7 +76,7 @@ export const signageConfig: SignageConfig = {
       double: 300,
       image: {
         remote: `${official}/suite-1485x990.jpg`,
-        fallback: '/assets/dream-hill/suite.jpg',
+        fallback: './assets/dream-hill/suite.jpg',
         alt: 'Dream Hill Suite Room',
         position: 'center 55%',
       },
@@ -89,7 +89,7 @@ export const signageConfig: SignageConfig = {
       double: 180,
       image: {
         remote: `${official}/deluxe_french_room-1485x990.jpg`,
-        fallback: '/assets/dream-hill/deluxe-french.jpg',
+        fallback: './assets/dream-hill/deluxe-french.jpg',
         alt: 'Dream Hill Deluxe French Bed Room',
         position: 'center 58%',
       },
@@ -102,7 +102,7 @@ export const signageConfig: SignageConfig = {
       double: 170,
       image: {
         remote: `${official}/deluxe_twin_room-1485x990.jpg`,
-        fallback: '/assets/dream-hill/deluxe-twin.jpg',
+        fallback: './assets/dream-hill/deluxe-twin.jpg',
         alt: 'Dream Hill Deluxe Twin Bed Room',
         position: 'center 54%',
       },
