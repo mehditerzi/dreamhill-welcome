@@ -6,6 +6,10 @@ describe('kiosk layout invariants', () => {
     expect(css).toMatch(/\.signage\s*\{[^}]*overflow:\s*clip;/s)
   })
 
+  it('centers the primary composition at an explicit 9:16 aspect ratio', () => {
+    expect(css).toMatch(/\.signage__frame\s*\{[^}]*max-width:\s*56\.25dvh;[^}]*margin:\s*0 auto;/s)
+  })
+
   it('preserves the supplied logo colors with padded breathing room', () => {
     expect(css).toMatch(/\.brand-header__logo\s*\{[^}]*padding:\s*[^;]+;/s)
     expect(css).toMatch(/\.resilient-image\.brand-header__logo img\s*\{[^}]*object-fit:\s*contain;[^}]*filter:\s*none;/s)
