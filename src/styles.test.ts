@@ -8,7 +8,7 @@ describe('kiosk layout invariants', () => {
 
   it('preserves the supplied logo colors with padded breathing room', () => {
     expect(css).toMatch(/\.brand-header__logo\s*\{[^}]*padding:\s*[^;]+;/s)
-    expect(css).toMatch(/\.brand-header__logo img\s*\{[^}]*filter:\s*none;/s)
+    expect(css).toMatch(/\.resilient-image\.brand-header__logo img\s*\{[^}]*object-fit:\s*contain;[^}]*filter:\s*none;/s)
   })
 
   it('gives extras a dedicated text column that cannot escape the card', () => {

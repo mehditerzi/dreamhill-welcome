@@ -135,7 +135,7 @@ body {
   box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 12px 32px rgba(0,0,0,.22), 0 0 34px rgba(213,182,111,.11);
 }
 
-.brand-header__logo img {
+.resilient-image.brand-header__logo img {
   object-fit: contain;
   filter: none;
 }
