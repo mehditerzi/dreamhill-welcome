@@ -2,6 +2,11 @@ import { describe, expect, it } from 'vitest'
 import css from './styles.css?raw'
 
 describe('kiosk layout invariants', () => {
+  it('uses a lifted warm-charcoal canvas instead of a near-black field', () => {
+    expect(css).toMatch(/--obsidian:\s*#151616;/)
+    expect(css).toMatch(/linear-gradient\(152deg,\s*#352711 0%,\s*#1b1c1d 26%,\s*#151719 67%,\s*#2c2213 100%\)/s)
+  })
+
   it('uses non-scrollable clipping for the animated signage surface', () => {
     expect(css).toMatch(/\.signage\s*\{[^}]*overflow:\s*clip;/s)
   })

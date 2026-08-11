@@ -2,11 +2,11 @@
   color-scheme: dark;
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #f3eee5;
-  background: #090a0b;
+  background: #151616;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --obsidian: #090a0b;
-  --charcoal: #121416;
+  --obsidian: #151616;
+  --charcoal: #212220;
   --ivory: #f3eee5;
   --stone: #aaa39a;
   --champagne: #d5b66f;
@@ -36,9 +36,9 @@ body {
   overflow: clip;
   user-select: none;
   background:
-    radial-gradient(130% 78% at 8% -5%, rgba(199, 154, 63, 0.22), transparent 51%),
-    radial-gradient(90% 52% at 100% 47%, rgba(171, 116, 39, 0.15), transparent 62%),
-    linear-gradient(152deg, #171207 0%, #090a0b 24%, #08090a 67%, #151005 100%);
+    radial-gradient(130% 78% at 8% -5%, rgba(218, 174, 84, 0.3), transparent 53%),
+    radial-gradient(90% 52% at 100% 47%, rgba(190, 133, 55, 0.21), transparent 64%),
+    linear-gradient(152deg, #352711 0%, #1b1c1d 26%, #151719 67%, #2c2213 100%);
 }
 
 .signage::before {
