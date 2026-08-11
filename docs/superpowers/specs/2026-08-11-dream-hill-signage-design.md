@@ -8,7 +8,7 @@ Build a production-ready, unattended hotel rate display for a 1080×1920 portrai
 
 The screen uses the **Cinematic Gallery** direction: official Dream Hill photography is the visual anchor, while a quiet charcoal pricing ledger supplies long-distance readability. Motion is slow, synchronized, and atmospheric.
 
-The signature element is a narrow champagne “focus rail” that travels between room rows while the hero photograph crossfades to the matching official room image. It communicates the unattended presentation cycle without resembling a carousel control.
+The signature element combines a narrow champagne “focus rail” that travels between room rows with a restrained glossy bloom and slow light sweep. The hero photograph crossfades to the matching official room image, communicating the unattended presentation cycle without resembling a carousel control.
 
 ## Visual System
 
@@ -21,7 +21,7 @@ The signature element is a narrow champagne “focus rail” that travels betwee
 - Stone — `#A8A29A`: secondary labels and TRY values
 - Deep bronze — `#6D5634`: restrained ambient bloom
 
-Gold appears only as a structural accent, never as a large fill. Photography remains naturally colored under a subtle neutral cinematic grade.
+Gold appears as a deep, glossy ambient bloom over the black base rather than a flat yellow fill. Slow bronze light fields and occasional champagne sweeps create a polished reflective quality while the pricing surfaces remain dark. Photography remains naturally colored under a subtle neutral cinematic grade.
 
 ### Typography
 
