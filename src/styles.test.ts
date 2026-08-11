@@ -10,8 +10,10 @@ describe('kiosk layout invariants', () => {
     expect(css).toMatch(/\.signage__frame\s*\{[^}]*max-width:\s*56\.25dvh;[^}]*margin:\s*0 auto;/s)
   })
 
-  it('preserves the supplied logo colors with padded breathing room', () => {
-    expect(css).toMatch(/\.brand-header__logo\s*\{[^}]*padding:\s*[^;]+;/s)
+  it('displays the supplied logo larger without a decorative container', () => {
+    expect(css).toMatch(/\.brand-header\s*\{[^}]*grid-template-columns:\s*minmax\(210px,\s*35%\) 1fr;/s)
+    expect(css).toMatch(/\.resilient-image\.brand-header__logo\s*\{[^}]*max-width:\s*340px;[^}]*padding:\s*0;[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*box-shadow:\s*none;[^}]*overflow:\s*visible;/s)
+    expect(css).toMatch(/\.resilient-image\.brand-header__logo::before\s*\{[^}]*inset:\s*-8% -7%;[^}]*background:\s*radial-gradient\([^}]*filter:\s*blur\(14px\);/s)
     expect(css).toMatch(/\.resilient-image\.brand-header__logo img\s*\{[^}]*object-fit:\s*contain;[^}]*filter:\s*none;/s)
   })
 
