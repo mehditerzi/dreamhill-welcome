@@ -26,4 +26,10 @@ describe('kiosk layout invariants', () => {
     expect(css).toMatch(/\.extra\s*\{[^}]*grid-template-columns:\s*auto minmax\(0,\s*1fr\);/s)
     expect(css).toMatch(/\.extra__name\s*\{[^}]*white-space:\s*nowrap;/s)
   })
+
+  it('defines a closed 36-second animation phase for video export', () => {
+    expect(css).toMatch(/\.signage--video::before\s*\{[^}]*animation:\s*video-gold-field 36s linear infinite;/s)
+    expect(css).toMatch(/@keyframes video-gold-field\s*\{[^}]*0%,\s*100%\s*\{[^}]*transform:[^}]+}[^}]*50%\s*\{/s)
+    expect(css).toMatch(/\.signage--video \.video-currency\s*\{/s)
+  })
 })

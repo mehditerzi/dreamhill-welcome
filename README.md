@@ -31,3 +31,19 @@ Run the checks:
 npm test
 npm run typecheck
 ```
+
+## EUR-only video loop
+
+Install Playwright's Chromium once, then export the 1080×1920, 36-second H.264 loops:
+
+```bash
+npx playwright install chromium
+npm run export:video
+```
+
+The command creates:
+
+- `exports/dream-hill-room-rates-1080x1920.mp4` — high-quality master
+- `exports/dream-hill-room-rates-1080x1920-usb.mp4` — smaller USB/TV copy
+
+Both files are silent, 30 fps, H.264 with `yuv420p`, and contain EUR prices only. FFprobe validation runs automatically after encoding.

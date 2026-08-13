@@ -8,20 +8,21 @@ type RoomRatesProps = {
   rate: number | null
   focus: PresentationFocus
   animationMs: number
+  showConversion?: boolean
 }
 
-function PriceColumn({ label, euro, rate, animationMs }: { label: string; euro: number; rate: number | null; animationMs: number }) {
+function PriceColumn({ label, euro, rate, animationMs, showConversion }: { label: string; euro: number; rate: number | null; animationMs: number; showConversion: boolean }) {
   return <div className="price-column">
     <span className="price-column__label">{label}</span>
     <strong>{formatEuro(euro)}</strong>
-    <span className="price-column__try">
+    {showConversion && <span className="price-column__try">
       <span aria-hidden="true">≈</span>{' '}
       {rate ? <AnimatedNumber value={convertEurToTry(euro, rate)} duration={animationMs} format={formatTry} /> : <span>₺—</span>}
-    </span>
+    </span>}
   </div>
 }
 
-export function RoomRates({ rooms, rate, focus, animationMs }: RoomRatesProps) {
+export function RoomRates({ rooms, rate, focus, animationMs, showConversion = true }: RoomRatesProps) {
   return <div className="room-rates">
     {rooms.map((room) => {
       const active = focus === room.id
@@ -36,8 +37,8 @@ export function RoomRates({ rooms, rate, focus, animationMs }: RoomRatesProps) {
           <span className="room-rate__name">{room.name}</span>
         </span>
         <span className="room-rate__prices">
-          <PriceColumn label="Single" euro={room.single} rate={rate} animationMs={animationMs} />
-          <PriceColumn label="Double" euro={room.double} rate={rate} animationMs={animationMs} />
+          <PriceColumn label="Single" euro={room.single} rate={rate} animationMs={animationMs} showConversion={showConversion} />
+          <PriceColumn label="Double" euro={room.double} rate={rate} animationMs={animationMs} showConversion={showConversion} />
         </span>
       </article>
     })}
